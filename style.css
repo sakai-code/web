@@ -89,6 +89,7 @@ a:hover {
 /*メインコンテンツの段落タグ*/
 #main p {
 	padding: 0px 20px 20px;	/*上、左右、下への余白*/
+	text-align :right;
 }
 #main h2 + p,
 #main h3 + p {
@@ -115,6 +116,7 @@ a:hover {
 		border-radius: 20px; /*角丸のサイズ*/
 		height:600px;
 	}
+	
 
 /*Worksページ
 ---------------------------------------------------------------------------*/
