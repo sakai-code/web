@@ -116,7 +116,7 @@
         var text = ""
         document.getElementById("input").addEventListener("click", () => {
             text = document.getElementById("inputform").value;
-            connectedDevices.forEach(d => uBitSend(d, "text"));
+            connectedDevices.forEach(d => uBitSend(d, text));
             document.getElementById("inputform").value = "";
 
         })</script>
