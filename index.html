@@ -1,38 +1,77 @@
 <!DOCTYPE html>
-<!-- saved from url=(0042)https://bsiever.github.io/microbit-webusb/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
-    <title>Micro:bit WebUSB Console</title>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>個人サイト向け 無料ホームページテンプレート tp_simple14</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ここにサイト説明を入れます">
+<meta name="keywords" content="キーワード１,キーワード２,キーワード３,キーワード４,キーワード５">
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <div class="box">
-        <div class="row header">
-                <button id="connect" class="button">Connect</button>
-        </div>
-        <div class="row header">
-                <button id="disconnect" class="button">Disconnect All</button>
-        </div>
-        <div class="row header">
-                <button id="send" class="button">Send "Test" to All</button>
-        </div>
-        <div class="row header">
-                <button id="clear" class="button">Clear Console</button>
-        </div>
 
-        <div id="console" class="row content" style="overflow:auto;border:4px solid black;padding:2%">
-            Waiting for connection.
-        </div>                            
-    </div>
+	
+
+	<div id="container">
+
+		<div id="main">
+
+			<section id="new" class="box">
+				<h2 id="newinfo_hdr" class="close"><span>Mcro:bitコンソール</span>プログラミング教育用</h2>
+				<dl id="newinfo">
+					<dt>2017/07/03</dt>
+					<dd>tp_simple14公開。<span class="newicon">NEW</span></dd>
+					<dt>20XX/00/00</dt>
+					<dd>サンプルテキスト。サンプルテキスト。サンプルテキスト。</dd>
+					<dt>20XX/00/00</dt>
+
+				</dl>
+			</section>
+
+			<section class="box" id="console" padding:2%">
+                
+				<p>接続待機中です</p>
 
 
-<!--  Include the webusb support library  -->
-<script src="ubitwebusb.js"></script>
 
-<script>
+			</section>
+            <input type="text" name="consoleinput" id="inputform"size="30"maxlength="20" >
+            <button id="input">送信する</button>
 
-    // Append a line to the console frame
+		</div>
+		<!--/main-->
+
+		<div id="sub">
+
+			<!--PC用（801px以上端末）ロゴ-->
+			<!--PC用（801px以上端末）メニュー-->
+			<nav id="menubar">
+				<ul>
+					<li><button id="connect" class="button">Micro:bitと接続する</button></li>
+					<li><button id="disconnect" class="button">Micro:bitと接続を終了</button></li>
+					<li><button id="send" class="button">文字を送信する</button></li>
+					<li><button id="clear" class="button">コンソール画面を消去する。</button></li>
+
+				</ul>
+			</nav>
+
+		</div>
+		<!--/sub-->
+
+		
+
+		<footer>
+			<small>Copyright&copy; <a href="index.html">Sample Web Site</a> All Rights Reserved.</small>
+			<span class="pr"><a href="http://template-party.com/" target="_blank">《Web Design:Template-Party》</a></span>
+		</footer>
+
+	</div>
+	<script src="ubitwebusb.js"></script>
+
+	<script>// Append a line to the console frame
     function consolePrintln(message) {
         var con = document.getElementById("console")
         con.innerHTML += "<br/>"+message
@@ -57,7 +96,7 @@
                 consolePrintln("<b>Connection Failure</b>")
                 break
             case "error":
-                consolePrintln("<b>Error</b>")                
+                consolePrintln("<b>Error</b>")
                 break
             case "console":
                 consolePrintln("Console Data: " + data.data)
@@ -75,9 +114,14 @@
     document.getElementById("connect").addEventListener("click", () => uBitConnectDevice(uBitEventHandler))
     document.getElementById("disconnect").addEventListener("click", () => connectedDevices.forEach(d=>uBitDisconnect(d)))
     document.getElementById("clear").addEventListener("click", () => { document.getElementById("console").innerHTML = "" })
-    document.getElementById("send").addEventListener("click", () => { connectedDevices.forEach( d=>uBitSend(d, "set")) })
+        document.getElementById("send").addEventListener("click", () => { connectedDevices.forEach(d => uBitSend(d, "Test")) })
+        var text = ""
+        document.getElementById("input").addEventListener("click", () => {
+            text = document.getElementById("inputform").value;
+            connectedDevices.forEach(d => uBitSend(d, "text"));
+            document.getElementById("inputform").value = "";
 
-</script>
+        })</script>
 
-
-</body></html>
+</body>
+</html>
