@@ -106,7 +106,7 @@ a:hover {
 	border-radius: 20px;	/*角丸のサイズ*/
 
 }
-	#main .box1 {
+#main .box1 {
 		overflow: scroll;
 		padding: 3%; /*ボックス内の余白*/
 		margin-bottom: 50px; /*ボックスの外（下）にあける余白*/
@@ -115,11 +115,11 @@ a:hover {
 		border: 1px solid #fff; /*線の幅・線種・色。*/
 		border-radius: 20px; /*角丸のサイズ*/
 		height:600px;
-	}
-	#main .box1 p {
+}
+#main .box1 p {
 		text-align:right;
 		
-	}
+}
 	
 	
 
