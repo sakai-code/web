@@ -468,7 +468,7 @@
 	<script>// Append a line to the console frame
     function consolePrintln(message) {
         var con = document.getElementById("console")
-        con.innerHTML += message
+        con.innerHTML += message +"<br>"
         con.scrollTop = con.scrollHeight
     }
 
@@ -493,7 +493,7 @@
                 consolePrintln("<b>Error</b>")
                 break
             case "console":
-                consolePrintln("<p > Console Data: " + data.data+"</p>")
+                consolePrintln("<p id='otherpost'> Console Data: " + data.data+"</p>")
                 break
             case "graph-event":
                 consolePrintln(`Graph Event:  ${data.data} (for ${data.graph}${data.series.length?" / series "+data.series:""})`)
@@ -514,8 +514,17 @@
             text = document.getElementById("inputform").value;
             connectedDevices.forEach(d => uBitSend(d, text));
             document.getElementById("inputform").value = "";
+            var puttext ="%t"
+            puttext = puttext.replace("&t'",text)
 
-        })</script>
+            consolePrintln2(text)
+
+        })
+        function consolePrintln2(message) {
+        var con = document.getElementById("console")
+        con.innerHTML += "<p id='mypost'><b id='myname'>1</b> "+message +"</p>"
+        con.scrollTop = con.scrollHeight
+    }</script>
 
 </body>
 </html>
